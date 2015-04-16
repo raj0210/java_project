@@ -11,57 +11,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="login.css">
        
         
     </head>
     <body>
-        <%
-            String username = request.getParameter("username");
-            session.putValue("username", username);
-            String pwd = request.getParameter("password");
-            Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/java","root","");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from register where first_name = "+username+"");
-            if(rs.next())
-            {
-                if(rs.getString(5).equals(pwd))
-                {
-                    out.println("Welcome "+username);
-                }
-            }
-            else
-            {
-                out.println("Incorrect Password");
-            }
-            
-            %>
-        
-        <h1>Login Page</h1>
-        <form name="login" action="login.jsp" method="POST">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th colspan="2">Login Page</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Username:</td>
-                        <td><input type="text" name="username" value="" size="50" /></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type="password" name="password" value="" size="50" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="Login" name="login" /></td>
-                    </tr>
-                </tbody>
-            </table>
+              
+        <div class="testbox" style="height: 290px">
+  <h1>Login</h1>
 
-        </form>
+  <form action="login" method="POST">
+      <hr>
+  
+  <label id="icon" for="username"><i class="icon-user"></i></label>
+  <input type="text" name="username" id="username" placeholder="Username" required/>    
+  
+  <label id="icon" for="password"><i class="icon-shield"></i></label>
+  <input type="password" name="password" id="password" placeholder="Password" required/> 
+  
+   
+  <input type="submit" value="Submit" name="submit" class="submit" />
+  </form>
+</div>
         
     </body>
 </html>
