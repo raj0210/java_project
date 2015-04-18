@@ -17,6 +17,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+                        <link rel="stylesheet" type="text/css" href="productDisplay.css">
+
     </head>
     <body>
          
@@ -34,8 +36,8 @@
                 try {
                     connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                     insertActors = connection.prepareStatement(
-                    "insert into selling_product (product_name, description, price, image, contact, city, province)"
-                   + "values (?, ?, ?, ?, ?, ?, ?)");
+                    "insert into selling_product (product_name, description, price, contact, city, province)"
+                   + "values (?, ?, ?, ?, ?, ?)");
                     
                             
                 }
@@ -44,17 +46,17 @@
                     e.printStackTrace();
                 }
                 }
-              public int setActors(String product, String desc, String price, String image, String contact,  String city, String province)
+              public int setActors(String product, String desc, String price, String contact,  String city, String province)
         {
             int result = 0;
             try {
             insertActors.setString (1, product);
             insertActors.setString (2, desc);    
             insertActors.setString (3, price);
-            insertActors.setString (4, image);
-            insertActors.setString (5, contact);
-            insertActors.setString (6, city);
-            insertActors.setString (7, province);
+           
+            insertActors.setString (4, contact);
+            insertActors.setString (5, city);
+            insertActors.setString (6, province);
             result = insertActors.executeUpdate();
             } catch(SQLException e)
             {
@@ -73,7 +75,7 @@
             String product = new String ();
             String desc = new String();    
             String price = new String();
-            String image = new String();
+            
             String contact = new String();
             String city = new String();
             String province = new String();
@@ -90,9 +92,7 @@
                 price = request.getParameter("price");
             }
             
-            if(request.getParameter("image") != null){
-                image = request.getParameter("image");
-            }
+          
             
             if(request.getParameter("contact") != null){
                 contact = request.getParameter("contact");
@@ -107,15 +107,15 @@
             }
             
            Actor actor = new Actor();
-            result = actor.setActors(product, desc, price, image, contact, city, province);
+            result = actor.setActors(product, desc, price, contact, city, province);
             }
         %>  
         
         <form action="addProduct.jsp" method="POST">
             <table border="0">
                 <thead>
-                    <tr>
-                        <th colspan="2"> Add Product here</th>
+                    <tr id="firstrow">
+                        <th colspan="2"> Add Product</th>
                         
                     </tr>
                 </thead>
@@ -132,10 +132,7 @@
                         <td>Price</td>
                         <td><input type="text" name="price" value="" /></td>
                     </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td><input type="file" name="image" value="" /></td>
-                    </tr>
+                   
                     <tr>
                         <td>Contact</td>
                         <td><input type="text" name="contact" value="" /></td>

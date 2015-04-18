@@ -5,88 +5,64 @@
 --%>
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<!DOCTYPE html>
+ 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Products</title>
-                <link rel="stylesheet" type="text/css" href="productDisplay.css">
-
+        <title>SELECT Operation</title>
+        <script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
+                        <link rel="stylesheet" type="text/css" href="productDisplay.css">
     </head>
     <body>
-        <h1>Product List</h1>
-      <form method="post">
-
-          <table border="2">
-<tr id="firstrow">
-<th>ID</th>
-<th>Product Name</th>
-<th>Description</th>
-<th>Price</th>
-<th>Contact</th>
-<th>City</th>
-<th>Province</th>
-<th>Update</th>
-<th>Delete</th>
-
-</tr>
-<%
-try
-{
-Class.forName("com.mysql.jdbc.Driver");
-String url="jdbc:mysql://localhost/java";
-String username="root";
-String password="";
-String query="select * from selling_product";
-Connection conn=DriverManager.getConnection(url,username,password);
-Statement stmt = conn.prepareStatement(query);
-//Statement stmt=conn.createStatement();
-ResultSet rs=stmt.executeQuery(query);
-while(rs.next())
-{
-
-%>
-    <tr><td><%=rs.getInt("ID") %></td>
-    <td><%=rs.getString("product_name") %></td>
-    <td><%=rs.getString("description") %></td>
-    <td><%=rs.getString("price") %></td>
-    <td><%=rs.getString("contact") %></td>
-    <td><%=rs.getString("city") %></td>
-    <td><%=rs.getString("province") %></td>
-    <td><a href="updateProduct.jsp?id=<c:out value="${row.id}"/>">Update</a></td>
-    <td><a href="deleteProduct.jsp">Delete</a></td>
-    
-    </tr>
-    
-        <%
-
-}
-%>
-    </table>
-    <%
-    rs.close();
-    stmt.close();
-    conn.close();
-    }
-catch(Exception e)
-{
-    e.printStackTrace();
-    }
-
-
-
-
-%>
-
-</form>
-    </body>
+ 
+        <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
+                           url="jdbc:mysql://localhost/java"
+                           user="root"  password=""/>
+ 
+        <sql:query dataSource="${dbsource}" var="result">
+            SELECT * from selling_product;
+        </sql:query>
+    <center>
+        <form>
+            <h1>Product List
+            </h1>
+            <table border="1" width="40%">
+                
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>description</th>
+                    <th>price</th>
+                    <th>contact</th>
+                    <th>city</th>
+                    <th>province</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <c:forEach var="row" items="${result.rows}">
+                    <tr>
+                        <td><c:out value="${row.id}"/></td>
+                        <td><c:out value="${row.product_name}"/></td>
+                        <td><c:out value="${row.description}"/></td>
+                        <td><c:out value="${row.price}"/></td>
+                        <td><c:out value="${row.contact}"/></td>
+                        <td><c:out value="${row.city}"/></td>
+                        <td><c:out value="${row.province}"/></td>
+                        <td><a href="updateForm.jsp?id=<c:out value="${row.id}"/>">Update</a></td>
+                        <td><a href="javascript:confirmGo('Are you sure to delete?','deleteProduct.jsp?id=<c:out value="${row.id}"/>')">Delete</a></td>
+                         
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+        
+    </center>
+</body>
 </html>

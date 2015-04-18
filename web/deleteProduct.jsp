@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,32 +15,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form name="update" action="update.jsp" method="POST">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Contact</th>
-                        <th>City</th>
-                        <th>Province</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" name="product" value="" /></td>
-                        <td><input type="text" name="desc" value="" /></td>
-                        <td><input type="text" name="price" value="" /></td>
-                        <td><input type="text" name="contact" value="" /></td>
-                        <td><input type="text" name="city" value="" /></td>
-                        <td><input type="text" name="province" value="" /></td>
-                     
-                    </tr>
-                </tbody>
-            </table>
-
-        </form>
+        <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
+                           url="jdbc:mysql://localhost/java"
+                           user="root"  password=""/>
+        <sql:update dataSource="${dbsource}" var="count">
+            DELETE FROM selling_product
+            WHERE id='${param.id}'
+        </sql:update>
+        <c:if test="${count>=1}">
+            <font size="5" color='green'>Data deleted successfully.</font>
+                       
+        </c:if>
     </body>
 </html>
