@@ -113,14 +113,14 @@
                         
                     </tr>
                 </thead>
-                <tbody>j
+                <tbody>
                     <tr>
                         <td>Product Name</td>
                         <td><input type="text" name="product" value="" /></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><textarea rows="4" cols="50"></textarea></td>
+                        <td><textarea name="desc" rows="4" cols="22"></textarea></td>
                     </tr>
                     <tr>
                         <td>Price</td>

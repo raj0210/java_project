@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2015 at 07:42 PM
+-- Generation Time: Apr 18, 2015 at 09:03 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -34,14 +34,15 @@ CREATE TABLE IF NOT EXISTS `register` (
   `email` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `register`
 --
 
 INSERT INTO `register` (`id`, `first_name`, `last_name`, `username`, `email`, `password`) VALUES
-(1, 'raj', 'buddhabhatti', 'rj0210', 'rjbuddhabhatti@gmail.com', '123456789');
+(1, 'raj', 'buddhabhatti', 'rj0210', 'rjbuddhabhatti@gmail.com', '123456789'),
+(2, 'jiten', 'padhiar', 'jpkumar', 'jpkumar@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,15 @@ CREATE TABLE IF NOT EXISTS `selling_product` (
   `city` varchar(20) NOT NULL,
   `province` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `selling_product`
+--
+
+INSERT INTO `selling_product` (`id`, `product_name`, `description`, `price`, `contact`, `city`, `province`) VALUES
+(5, 'mobile', 'samsung galaxy note 3', '$600', '5193120373', 'Sarnia', 'ON'),
+(6, 'ipad', 'apple ipad 2 ratina display', '$500', '4567891230', 'Toronto', 'ON');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
