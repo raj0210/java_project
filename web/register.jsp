@@ -120,7 +120,7 @@
   <label id="icon" for="password"><i class="icon-shield"></i></label>
   <input type="password" name="password" id="password" placeholder="Password" required/> 
   
-   <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+   
    <input type="submit" value="Submit" name="submit" class="submit" />
   </form>
 </div>

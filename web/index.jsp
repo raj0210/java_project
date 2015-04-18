@@ -1,110 +1,42 @@
 <%-- 
-    Document   : index
-    Created on : 5-Apr-2015, 3:33:21 PM
+    Document   : login
+    Created on : 14-Apr-2015, 7:40:59 PM
     Author     : c0646395
 --%>
-<%@page import="java.sql.*"%>
-<%@page import="java.util.Date" %>
-<% Class.forName("com.mysql.jdbc.Driver"); %>
+<%@page import = "java.sql.*"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="login.css">
+       
+        
     </head>
     <body>
-        <h1>Login Page</h1>
-        <%!
-        public class Actor {
-            String URL = "jdbc:mysql://localhost/java";
-            String USERNAME = "root";
-            String PASSWORD = "";
-            
-            Connection connection = null;
-            PreparedStatement insertActors = null;
-            ResultSet resultset = null;
-            
-            public Actor(){
-                try {
-                    connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                    insertActors = connection.prepareStatement(
-                    "insert into user (email,password)"
-                   + "values (?, ?)");
-                    
-                            
-                }
-                
-                catch (SQLException e){
-                    e.printStackTrace();
-                }
-                }
-              public int setActors(String email, String password)
-        {
-            int result = 0;
-            try {
-            insertActors.setString (1, email);
-            insertActors.setString (2, password);
-            result = insertActors.executeUpdate();
-            } catch(SQLException e)
-            {
-                e.printStackTrace();
-            }
-            return result;
-        }
-            }
-    
-        %>
-        
-        <%
-            int result = 0;
-            
-            if(request.getParameter("submit") != null){
-            String email = new String ();
-            String password = new String();
-            
-            if(request.getParameter("email") != null){
-                email = request.getParameter("email");
-            }
-            if(request.getParameter("password") != null){
-                password = request.getParameter("password");
-            }
-            
-           Actor actor = new Actor();
-            result = actor.setActors(email, password);
-            }
-        %>  
-        
-        
-        
-        
-        <form name="loginForm" action="index.jsp" method="POST">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th colspan="2">Enter your login details</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>First Name:</td>
-                        <td><input type="text" name="email" value="" size="50" /></td>
-                    </tr>
-                    <tr>
-                        <td>Last Name:</td>
-                        <td><input type="password" name="password" value="" size="50" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="reset" value="Clear" name="clear" />
-                        <input type="submit" value="Submit" name="submit" /></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            
-            <a href="register.jsp">Register</a>
-        </form>
+              
+        <div class="testbox" style="height: 290px">
+  <h1>Login</h1>
 
+  <form action="login" method="POST">
+      <hr>
+  
+  <label id="icon" for="username"><i class="icon-user"></i></label>
+  <input type="text" name="username" id="username" placeholder="Username" required/>    
+  
+  <label id="icon" for="password"><i class="icon-shield"></i></label>
+  <input type="password" name="password" id="password" placeholder="Password" required/> 
+  
+   
+  <input type="submit" value="Submit" name="submit" class="submit" />
+  
+  <p><a href="register.jsp">Register now</a></p>
+  </form>
+</div>
+        
     </body>
 </html>
