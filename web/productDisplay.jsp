@@ -5,10 +5,15 @@
 --%>
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,7 +35,9 @@
 <th>Contact</th>
 <th>City</th>
 <th>Province</th>
-<th>Name</th>
+<th>Update</th>
+<th>Delete</th>
+
 </tr>
 <%
 try
@@ -39,7 +46,7 @@ Class.forName("com.mysql.jdbc.Driver");
 String url="jdbc:mysql://localhost/java";
 String username="root";
 String password="";
-String query="select sp.id, sp.product_name, sp.description, sp.price, sp.contact, sp.city, sp.province, r.first_name from selling_product sp, register r";
+String query="select * from selling_product";
 Connection conn=DriverManager.getConnection(url,username,password);
 Statement stmt = conn.prepareStatement(query);
 //Statement stmt=conn.createStatement();
@@ -55,7 +62,11 @@ while(rs.next())
     <td><%=rs.getString("contact") %></td>
     <td><%=rs.getString("city") %></td>
     <td><%=rs.getString("province") %></td>
-    <td><%=rs.getString("first_name") %></td></tr>
+    <td><a href="updateProduct.jsp?id=<c:out value="${row.id}"/>">Update</a></td>
+    <td><a href="deleteProduct.jsp">Delete</a></td>
+    
+    </tr>
+    
         <%
 
 }
