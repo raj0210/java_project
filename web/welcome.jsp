@@ -36,7 +36,8 @@ Welcome <%=session.getAttribute("name")%>
    <li><a href='addProduct.jsp'><span>Add Product</span></a></li>
    <li class='last'><a href='#'><span>Contact</span></a></li>
 </ul>
-</div>     
+       <img src="ls-03.jpg" style="height: 450px" width="100%">
+</div>      
   
 
         

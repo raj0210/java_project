@@ -29,8 +29,13 @@
             <sql:param value="${param.province}" />
         </sql:update>
         <c:if test="${count>=1}">
-            <font size="5" color='green'>Data updated successfully.</font>
-                       
+<!--           <font size="5" color='green'>Data updated successfully.</font>-->
+          
+                       <script>
+                
+            alert("Data updated successfully.");
+            window.location="productDisplay.jsp";
+            </script>
         </c:if>
     </body>
 </html>

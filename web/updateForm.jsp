@@ -30,6 +30,7 @@
             <table border="0" width="40%">
                 <caption>Update Product</caption>
                 <tr>
+                    <th>ID</th>
                     <th>Product Name</th>
                     <th>description</th>
                     <th>price</th>
@@ -39,14 +40,14 @@
                 </tr>
                 <c:forEach var="row" items="${result.rows}">
                     <tr>
-<!--                        <td><input type="hidden" value="${param.id}" name="id"/>-->
+                        <td><input type="text" style="width: 10px" value="${param.id}" name="id" readonly="readonly"/>
                         <td><input type="text" value="${row.product_name}" name="product_name"/></td>
                         <td><input type="text" value="${row.description}" name="description"/></td>
                         <td><input type="text" value="${row.price}" name="price"/></td>
                         <td><input type="text" value="${row.contact}" name="contact"/></td>
                         <td><input type="text" value="${row.city}" name="city"/></td>
                         <td><input type="text" value="${row.province}" name="province"/></td></tr>
-                    <tr><td colspan="6"><input type="submit" value="Update"/></td></tr>
+                    <tr><td colspan="7"><input type="submit" value="Update"/></td></tr>
                     
                 </c:forEach>
             </table>

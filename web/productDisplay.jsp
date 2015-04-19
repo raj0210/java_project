@@ -62,12 +62,13 @@ Welcome <%=session.getAttribute("name")%>
                 <tr id="firstrow">
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>description</th>
-                    <th>price</th>
-                    <th>contact</th>
-                    <th>city</th>
-                    <th>province</th>
-                    <th colspan="2">Action</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Contact</th>
+                    <th>City</th>
+                    <th>Province</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
                 <c:forEach var="row" items="${result.rows}">
                     <tr>
