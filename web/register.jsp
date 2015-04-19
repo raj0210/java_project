@@ -122,6 +122,7 @@
   
    
    <input type="submit" value="Submit" name="submit" class="submit" />
+   <a href="index.jsp">Login</a>
   </form>
 </div>
 

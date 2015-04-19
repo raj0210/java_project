@@ -30,7 +30,7 @@ Welcome <%=session.getAttribute("name")%>
     }
 %>
    <div id='cssmenu'>
-<ul>
+       <ul style="width: 100%">
    <li class='active'><a href='#'><span>Home</span></a></li>
    <li><a href='productDisplay.jsp'><span>Products</span></a></li>
    <li><a href='addProduct.jsp'><span>Add Product</span></a></li>
