@@ -14,6 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+                            <link rel="stylesheet" type="text/css" href="productDisplay.css">
+
     <body>
  
         <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
@@ -37,15 +39,15 @@
                 </tr>
                 <c:forEach var="row" items="${result.rows}">
                     <tr>
-                        <td><input type="hidden" value="${param.id}" name="id"/>
+<!--                        <td><input type="hidden" value="${param.id}" name="id"/>-->
                         <td><input type="text" value="${row.product_name}" name="product_name"/></td>
                         <td><input type="text" value="${row.description}" name="description"/></td>
                         <td><input type="text" value="${row.price}" name="price"/></td>
                         <td><input type="text" value="${row.contact}" name="contact"/></td>
                         <td><input type="text" value="${row.city}" name="city"/></td>
-                        <td><input type="text" value="${row.province}" name="province"/></td>
-                        <td><input type="submit" value="Update"/></td>
-                    </tr>
+                        <td><input type="text" value="${row.province}" name="province"/></td></tr>
+                    <tr><td colspan="6"><input type="submit" value="Update"/></td></tr>
+                    
                 </c:forEach>
             </table>
            

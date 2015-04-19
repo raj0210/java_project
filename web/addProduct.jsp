@@ -18,10 +18,31 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
                         <link rel="stylesheet" type="text/css" href="productDisplay.css">
+                          <link rel="stylesheet" href="navigation.css">
+         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
     </head>
     <body>
-         
+          <%
+    if ((session.getAttribute("name") == null) || (session.getAttribute("name") == "")) {
+%>
+You are not logged in<br/>
+<a href="index.jsp">Please Login</a>
+<%} else {
+%>
+Welcome <%=session.getAttribute("name")%>
+<a href='logout.jsp'>Log out</a>
+<%
+    }
+%>
+         <div id='cssmenu'>
+             <ul style="width: 410px">
+    <li ><a href='welcome.jsp'><span>Home</span></a></li>
+   <li><a href='productDisplay.jsp'><span>Products</span></a></li>
+   <li class="active"><a href='addProduct.jsp'><span>Add Product</span></a></li>
+ <li class='last'><a href='#'><span>Contact</span></a></li>
+</ul>
+</div>
         <%!
         public class Actor {
             String URL = "jdbc:mysql://localhost/java";
@@ -113,13 +134,12 @@
         
         <form action="addProduct.jsp" method="POST">
             <table border="0">
-                <thead>
+               
+                <tbody>
                     <tr id="firstrow">
                         <th colspan="2"> Add Product</th>
                         
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td>Product Name</td>
                         <td><input type="text" name="product" value="" /></td>
@@ -145,9 +165,9 @@
                         <td>Province</td>
                         <td><input type="text" name="province" value="" /></td>
                     </tr>
-                    <tr>
+                    <tr id="firstrow">
                         <td colspan="2">
-                            <input type="submit" value="Submit" name="submit" />
+                            <input type="submit" value="Submit" name="submit" class="submit"/>
                         </td>
                     </tr>
                 </tbody>

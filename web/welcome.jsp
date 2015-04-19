@@ -9,9 +9,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
+         <link rel="stylesheet" href="navigation.css">
+         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+                                 
+
+   
     </head>
     <body>
-        <h1>Hello !</h1>
+           <%
+    if ((session.getAttribute("name") == null) || (session.getAttribute("name") == "")) {
+%>
+You are not logged in<br/>
+<a href="index.jsp">Please Login</a>
+<%} else {
+%>
+Welcome <%=session.getAttribute("name")%>
+<a href='logout.jsp'>Log out</a>
+<%
+    }
+%>
+   <div id='cssmenu'>
+<ul>
+   <li class='active'><a href='#'><span>Home</span></a></li>
+   <li><a href='productDisplay.jsp'><span>Products</span></a></li>
+   <li><a href='addProduct.jsp'><span>Add Product</span></a></li>
+   <li class='last'><a href='#'><span>Contact</span></a></li>
+</ul>
+</div>     
+  
+
+        
+        
+        
+     
+
     </body>
 </html>
+

@@ -23,7 +23,11 @@
             WHERE id='${param.id}'
         </sql:update>
         <c:if test="${count>=1}">
-            <font size="5" color='green'>Data deleted successfully.</font>
+            <script>
+                
+            alert("Data deleted successfully.");
+            window.location="productDisplay.jsp";
+            </script>
                        
         </c:if>
     </body>
